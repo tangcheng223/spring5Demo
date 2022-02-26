@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean标签 id属性：指定Bean的名称，在Bean被别的类依赖时使⽤
+        name属性：⽤于指定Bean的别名，如果没有id，也可以⽤name
+        class属性：⽤于指定Bean的来源，要创建的Bean的class类，需要全限定名-->
+    <bean id="domain" class="com.tc.sp.domain.Domain">
+        <property name="id" value="4"></property>
+        <property name="title" value="Spring5.x学习"></property>
+    </bean>
+
+    <bean id="domainOrder" class="com.tc.sp.domain.DomainOrder">
+        <property name="id" value="4"></property>
+        <property name="oderNo" value="oderNo"></property>
+        <property name="domain" ref="domain"></property><!--依赖注入-->
+    </bean>
+</beans>

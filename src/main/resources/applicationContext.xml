@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean标签 id属性：指定Bean的名称，在Bean被别的类依赖时使用
+        name属性：用于指定Bean的别名，如果没有id，也可以用name
+        class属性：用于指定Bean的来源，要创建的Bean的class类，需要全限定名
+        scope属性
+                singleton：单例, 默认值，调用getBean方法返回是同一个对象,实例会被缓存起来，效率比较高当一个bean被标识为singleton时候，spring的IOC容器中只会存在⼀个该bean
+                prototype: 多例，调⽤getBean方法创建不同的对象，会频繁的创建和销毁对象造成很大的开销
+        其他少用（作用域 只在 WebApplicationContext）
+            request ：每个Http请求都会创建⼀个新的bean
+            session: 每个Http Session请求都会创建⼀个新的bean
+            global session（基本不用）
+        -->
+    <bean id="domain" class="com.tc.sp.domain.Domain">
+        <property name="id" value="4"></property>
+        <property name="title" value="Spring5.x学习"></property>
+    </bean>
+
+    <bean id="domainOrder" class="com.tc.sp.domain.DomainOrder">
+        <property name="id" value="4"></property>
+        <property name="oderNo" value="oderNo"></property>
+        <property name="domain" ref="domain"></property><!--依赖注入DI-->
+    </bean>
+</beans>
